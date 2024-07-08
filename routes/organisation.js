@@ -3,34 +3,31 @@ const router = express.Router();
 
 const organisationController = require('../controllers/organisationController')
 
-const {createOrganization, 
-       getUserOrganisation, 
-       addUserToOrganization,
-       getOrganizationByIdForUser
+const { 
+        createOrganization, 
+        getUserOrganisation, 
+        addUserToOrganization,
+        getOrganizationByIdForUser
       } = organisationController;
 
-//[POST]------/api/organisations
-//User can create thier new organisation //201//400
-//protected
+//@route Post /api/organisations
+//@desc  User can create their new organisation
+//@Protected
 router.post('/',createOrganization);
 
-
-//[GET]------/api/organisations
-//All organisation user belong to or Created just login user
-//Potected
+//@route get /api/organisations
+//@desc  get all organisation a user belong to or Created
+//@Protected
 router.get('/',getUserOrganisation);
 
-
-//[POST]------/api/organisations/:orgId/users
-//USer can create their new organisation
-//Protected
+//@route post /api/organisations/:orgId/users
+//@desc  Add a user to a particular organisation
+//@Protected
 router.post('/:orgId/users',addUserToOrganization);
 
-
-//[GET]------/api/users/:id
-//Get a single organisation record
-//protected
-// sucessful 200
+//@route get /api/organisations/:orgId
+//@desc  Get a single organisation record
+//@Protected
 router.get('/:orgId',getOrganizationByIdForUser);
 
 
