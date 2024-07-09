@@ -18,34 +18,4 @@ const sequelize = new Sequelize('mydatabase', 'bts', '', {
 })();
 
 module.exports = sequelize;
-// const { Client } = require('pg');
 
-// const client = new Client({
-//     host: 'localhost',
-//     port: 5432,
-//     database: 'mydatabase',
-//     password: ''
-// });
-
-// const connectDb = () => {
-//     return new Promise((resolve, reject) => {
-//         client.connect((err) => {
-//             if (err) {
-//                 console.error('db connection error', err.stack);
-//                 reject(err);
-//             } else {
-//                 console.log('db connected');
-//                 resolve(client);
-//             }
-//         });
-//     });
-// };
-
-// const getClient = async () => {
-//     if(!client._connected) {
-//         await connectDb();
-//     }
-//     return client;
-// }
-
-// module.exports = getClient;

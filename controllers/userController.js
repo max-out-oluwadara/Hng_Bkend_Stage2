@@ -1,8 +1,6 @@
 const User = require('../models/User');
 
-//@route Get /api/users/:id
-//@desc 
-//@Protected
+//@desc User get ther details
 exports.getUserDetails = async (req, res) => {
     try {
       const user = await User.findByPk(req.params.id);

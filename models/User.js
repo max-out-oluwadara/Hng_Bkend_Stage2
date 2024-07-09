@@ -1,8 +1,7 @@
-// const getClient = require('../config/db')
 const Sequelize = require('sequelize')
-
 const sequelize = require('../config/db');
 
+//Define Our User model and DataType
 const User = sequelize.define('user', {
     userId: {
         type: Sequelize.STRING,

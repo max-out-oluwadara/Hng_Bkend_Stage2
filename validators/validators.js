@@ -1,5 +1,6 @@
 const { check, validationResult } = require('express-validator');
 
+//Registration validation
 const registerValidation = [
     check('firstName')
         .notEmpty()
@@ -20,6 +21,8 @@ const registerValidation = [
         .withMessage('password must be at least 6 character long')
 ];
 
+
+//Login validation
 const loginValidation = [
     check('email')
         .isEmail()
@@ -31,6 +34,8 @@ const loginValidation = [
         .withMessage('Invalid Password')
 ];
 
+
+//Log our Error through Json
 const validate = (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {

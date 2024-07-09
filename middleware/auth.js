@@ -1,28 +1,25 @@
 const jwt = require('jsonwebtoken');
+const User = require('../models/User')
+const Organisation = require('../models/User')
 require('dotenv').config();
 
-
-module.exports = function (req, res, next) {
-    //Get Token from header
-    const token = req.header('x-auth-token');
-
-
-    //Check if not token
-    if(!token) {
-        return res.status(401).json({ message: 'No token, authorization denied '});
-    }
-
+//Define Our Middleware and Encode Our UderID
+module.exports = async (req, res, next) => {
     try {
-        //Verify Token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        // const token = req.header('Authorization').replace('Bearer ', '');
+        const token = req.header('x-auth-token');
+        
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        //Attach user from payload to request
-        req.user = decoded.user;
+        const user = await User.findOne({ where: { userId: decoded.userId } });
 
-        //Call the next middleware or route handler
+        if (!user) {
+            throw new Error();
+        }
+
+        req.user = user;
         next();
-    } catch (err){
-        res.status(401).json({message:"Token is not Valid"});
-    }  
-
-}
+    } catch (error) {
+        res.status(401).json({ message: 'Token is not Valid' });
+    }
+};

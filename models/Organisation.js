@@ -1,8 +1,8 @@
-
 const Sequelize = require('sequelize')
-
 const sequelize = require('../config/db');
 
+
+//Define Our Organisation model and DataType
 const Organisation = sequelize.define('organisation', {
     orgId: {
         type: Sequelize.STRING,
