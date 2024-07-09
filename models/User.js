@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
 
-//Define Our User model and DataType
+// Define Our User model and DataType
 const User = sequelize.define('user', {
     userId: {
         type: Sequelize.STRING,
@@ -29,6 +29,9 @@ const User = sequelize.define('user', {
     phone: {
         type: Sequelize.STRING,
     }
+}, {
+    // Disable the automatic timestamps
+    timestamps: false
 });
 
 module.exports = User;

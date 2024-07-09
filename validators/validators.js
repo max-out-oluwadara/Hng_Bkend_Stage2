@@ -30,8 +30,6 @@ const loginValidation = [
     check('password')
         .notEmpty()
         .withMessage('Password is required')
-        .isLength({min:6})
-        .withMessage('Invalid Password')
 ];
 
 

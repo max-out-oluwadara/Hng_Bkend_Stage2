@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
 
-//Define Our Organisation User model and DataType
+// Define Our Organisation User model and DataType
 const OrganisationUser = sequelize.define('organisation_user', {
     orgId: {
         type: Sequelize.STRING,
@@ -17,6 +17,9 @@ const OrganisationUser = sequelize.define('organisation_user', {
             key: 'userId'
         }
     }
+}, {
+    // Disable the automatic timestamps
+    timestamps: false
 });
 
 module.exports = OrganisationUser;

@@ -1,8 +1,7 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = require('../config/db');
 
-
-//Define Our Organisation model and DataType
+// Define Our Organisation model and DataType
 const Organisation = sequelize.define('organisation', {
     orgId: {
         type: Sequelize.STRING,
@@ -22,6 +21,9 @@ const Organisation = sequelize.define('organisation', {
         type: Sequelize.STRING,
         allowNull: false,
     }
+}, {
+    // Disable the automatic timestamps
+    timestamps: false
 });
 
 module.exports = Organisation;

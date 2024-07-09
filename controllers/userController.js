@@ -4,7 +4,7 @@ const User = require('../models/User');
 exports.getUserDetails = async (req, res) => {
     try {
       const user = await User.findByPk(req.params.id);
-      console.log(req.params.id)
+
       if (!user) {
         return res.status(404).json({
           status: 'error',
