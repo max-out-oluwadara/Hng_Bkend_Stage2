@@ -18,14 +18,15 @@ exports.registerUser = async (req, res) => {
         const userId = uuidv4();
 
         // Add userId to the request body
-        const userData = {
-            userId,
-            firstName,
-            lastName,
-            email,
-            password,
-            phone
-        };
+        const userData = 
+            {
+                userId,
+                firstName,
+                lastName,
+                email,
+                password,
+                phone
+            };
 
         // Check if email already exists
         let checkEmail = await User.findOne({ where: { email } });

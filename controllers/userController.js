@@ -15,13 +15,14 @@ exports.getUserDetails = async (req, res) => {
       res.status(200).json({
         status: 'success',
         message: 'User Information retrieved successfully',
-        data: {
-          userId: user.userId,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          phone: user.phone,
-        },
+        data: 
+          {
+            userId: user.userId,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            phone: user.phone,
+          },
       });
     } catch (err) {
       console.error('Error retrieving user information');

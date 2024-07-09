@@ -31,7 +31,7 @@ Organisation.belongsToMany(User, { through: OrganisationUser, foreignKey: 'orgId
 User.belongsToMany(Organisation, { through: OrganisationUser, foreignKey: 'userId' });
 
 //Our server port
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 6543
 
 //Home page to show server is working
 app.get('/', (req, res) => {
@@ -58,3 +58,5 @@ app.listen(port,()=>{
 })
     .catch(err =>{ console.log(err)
 });
+
+module.exports = app 

@@ -35,8 +35,9 @@ exports.getMyOrganisations = async (req, res) => {
         res.status(200).json({
             status: 'success',
             message: 'Organisations retrieved successfully',
-            data: {
-                organisations: organisations.map(org => ({
+            data: 
+                {
+                    organisations: organisations.map(org => ({
                     orgId: org.orgId,
                     name: org.name,
                     description: org.description
@@ -58,7 +59,7 @@ exports.getMyOrganisations = async (req, res) => {
 exports.getOrganisationById = async (req, res)=>{
     try {
         const orgId = req.params.orgId;
-        const userId = req.user.userId; // Assuming the userId is stored in req.user by the authenticate middleware
+        const userId = req.user.userId; // Retreving userId from middlware
 
         if (!userId) {
             return res.status(401).json({
@@ -82,7 +83,7 @@ exports.getOrganisationById = async (req, res)=>{
             status: 'success',
             message: 'Organisation retrieved successfully',
             data: {
-                organisation: {
+                    organisation: {
                     orgId: organisation.orgId,
                     name: organisation.name,
                     description: organisation.description
@@ -104,7 +105,7 @@ exports.getOrganisationById = async (req, res)=>{
 //User can Create their new organisation
 exports.createOrganization = async (req, res)=>{
     try {
-        const userId = req.user.userId; // Assuming the userId is stored in req.user by the authenticate middleware
+        const userId = req.user.userId; // Retreving userId from middlware
         const { name, description } = req.body;
 
         if (!name) {
@@ -115,7 +116,7 @@ exports.createOrganization = async (req, res)=>{
         }
 
         const newOrganisation = await Organisation.create({
-            orgId: uuidv4(), //uuid.v4(), // Assuming you want to use UUIDs for organisation IDs
+            orgId: uuidv4(), //Generating ID
             name,
             description,
             userId
@@ -125,11 +126,12 @@ exports.createOrganization = async (req, res)=>{
             status: 'success',
             message: 'Organisation created successfully',
             data: {
-                organisation: {
-                    orgId: newOrganisation.orgId,
-                    name: newOrganisation.name,
-                    description: newOrganisation.description
-                }
+                organisation: 
+                    {
+                        orgId: newOrganisation.orgId,
+                        name: newOrganisation.name,
+                        description: newOrganisation.description
+                    }
             }
         });
     } catch (err) {
