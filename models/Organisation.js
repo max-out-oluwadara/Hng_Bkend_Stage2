@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../config/db');
+const sequelize = require('../src/database');
+
 
 // Define Our Organisation model and DataType
 const Organisation = sequelize.define('organisation', {

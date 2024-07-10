@@ -1,0 +1,28 @@
+{
+  "development": {
+    "username": "postgres.huwlqbxowrhlybewfgou",
+    "password": "Oluwadara123",
+    "database": "postgres",
+    "host": "aws-0-us-west-1.pooler.supabase.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "production": {
+    "username": "postgres.huwlqbxowrhlybewfgou",
+    "password": "Oluwadara123",
+    "database": "postgres",
+    "host": "aws-0-us-west-1.pooler.supabase.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
