@@ -37,6 +37,7 @@ exports.registerUser = async (req, res) => {
                 msg: 'Email already exists'
             });
         }
+        
 
         const salt = await bcrypt.genSalt(10);
         userData.password = await bcrypt.hash(password, salt);
@@ -54,22 +55,18 @@ exports.registerUser = async (req, res) => {
 
         await t.commit();
 
+        
+
         // Generate jwt token
         const accessToken = jwt.sign({ userId: user.userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        console.log(typeof(user))
 
         res.status(201).json({
             status: "success",
             message: "Registration successful",
             accessToken,
-            user: 
-                {
-                    "userId": userId,
-                    "firstName": firstName,
-                    "lastName":lastName,
-                    "email": email,
-                    "password": password,
-                    "phone": phone
-                }
+            user
         });
     } catch (err) {
         await t.rollback();
