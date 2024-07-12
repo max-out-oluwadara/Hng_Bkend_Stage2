@@ -19,11 +19,7 @@ const registerValidation =
             .isEmail()
             .withMessage('Please provide a valid email'),
         check('phone')
-            .trim() // removes leading and trailing spaces
-            .isNumeric()
-            .withMessage('Phone number should contain only numeric characters')
-            .isLength({ min: 10, max: 15 })
-            .withMessage('Phone number should be between 10 and 15 digits'),
+            .trim(), // removes leading and trailing spaces
         check('password')
             .notEmpty()
             .withMessage('Password is required')
