@@ -4,17 +4,28 @@ const { check, validationResult } = require('express-validator');
 const registerValidation = 
     [
         check('firstName')
-            .notEmpty()
-            .withMessage('First name is required'),
+            .trim()
+            .matches(/^(?=.*[A-Za-z])[A-Za-z\s-]+$/)
+            .withMessage(`First name should only contain alphabet and '-'`)
+            .isLength({ max: 50 })
+            .withMessage('First name should not exceed 50 characters'),
         check('lastName')
-            .notEmpty()
-            .withMessage('Last name is required'),
+            .trim()
+            .matches(/^(?=.*[A-Za-z])[A-Za-z\s-]+$/)
+            .withMessage(`Last name should only contain alphabet and '-'`)
+            .isLength({ max: 50 })
+            .withMessage('last name should not exceed 50 characters'),
         check('email')
             .isEmail()
             .withMessage('Please provide a valid email'),
         check('phone')
+            .trim() // removes leading and trailing spaces
             .notEmpty()
-            .withMessage('Please provide phone number'),
+            .withMessage('Phone number is required')
+            .isNumeric()
+            .withMessage('Phone number should contain only numeric characters')
+            .isLength({ min: 10, max: 15 })
+            .withMessage('Phone number should be between 10 and 15 digits'),
         check('password')
             .notEmpty()
             .withMessage('Password is required')
@@ -27,6 +38,9 @@ const registerValidation =
 const loginValidation = 
     [
         check('email')
+            .trim()
+            .notEmpty()
+            .withMessage('Email cannot is required')
             .isEmail()
             .withMessage('Please provide a valid email'),
         check('password')
