@@ -33,7 +33,7 @@ exports.registerUser = async (req, res) => {
 
         if (checkEmail) {
             await t.rollback();
-            return res.status(400).json({
+            return res.status(422).json({
                 msg: 'Email already exists'
             });
         }
@@ -60,10 +60,16 @@ exports.registerUser = async (req, res) => {
         res.status(201).json({
             status: "success",
             message: "Registration successful",
-            data: {
-                accessToken: accessToken
-            },
-            user
+            accessToken,
+            user: 
+                {
+                    "userId": userId,
+                    "firstName": firstName,
+                    "lastName":lastName,
+                    "email": email,
+                    "password": password,
+                    "phone": phone
+                }
         });
     } catch (err) {
         await t.rollback();

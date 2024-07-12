@@ -34,7 +34,7 @@ module.exports = sequelize;
 //     logging: false, // Optional: Disable logging or provide a function for custom logging
 // });
 
-// // Test the connection
+// Test the connection
 // (async () => {
 //     try {
 //         await sequelize.authenticate();
